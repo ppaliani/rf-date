@@ -27,4 +27,14 @@ public class Testing {
     Assert.assertTrue(date.getYear() == testYear);
   }
 
+  @Test
+  public void testmonthString() {
+    Assert.assertTrue(date.monthString(2).equalsIgnoreCase("February"));
+  }
+
+  @Test
+  public void testMonthOK() {
+    String testMonth2 = "July";
+    Assert.assertTrue(date.monthOK(testMonth2) == true);
+  }
 }
