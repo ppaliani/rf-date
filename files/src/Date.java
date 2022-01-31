@@ -23,16 +23,16 @@ public class Date {
     setDate(1, 1, year);
   }
 
-  public Date(Date aDate) {
-    if (aDate == null)// Not a real date.
+  public Date(Date falseDate) {
+    if (falseDate == null)// Not a real date.
     {
       System.out.println("Fatal Error.");
       System.exit(0);
     }
 
-    month = aDate.month;
-    day = aDate.day;
-    year = aDate.year;
+    month = falseDate.month;
+    day = falseDate.day;
+    year = falseDate.year;
   }
 
   public void setDate(int monthInt, int day, int year) {
@@ -47,7 +47,7 @@ public class Date {
   }
 
   public void setDate(String monthString, int day, int year) {
-    if (dateOK(monthString, day, year)) {
+    if (dateCheck(monthString, day, year)) {
       this.month = monthString;
       this.day = day;
       this.year = year;
@@ -152,7 +152,7 @@ public class Date {
       var monthInput = keyboard.next();
       var dayInput = keyboard.nextInt();
       var yearInput = keyboard.nextInt();
-      if (dateOK(monthInput, dayInput, yearInput)) {
+      if (dateCheck(monthInput, dayInput, yearInput)) {
         setDate(monthInput, dayInput, yearInput);
         tryAgain = false;
       } else
@@ -165,12 +165,12 @@ public class Date {
         && (yearInt >= 1000) && (yearInt <= 9999));
   }
 
-  private boolean dateOK(String monthString, int dayInt, int yearInt) {
-    return (monthOK(monthString) && (dayInt >= 1) && (dayInt <= 31) && (yearInt >= 1000)
+  private boolean dateCheck(String monthString, int dayInt, int yearInt) {
+    return (monthCheck(monthString) && (dayInt >= 1) && (dayInt <= 31) && (yearInt >= 1000)
         && (yearInt <= 9999));
   }
 
-  private boolean monthOK(String month) {
+  public boolean monthCheck(String month) {
 
     return switch (month) {
       case "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" -> true;
@@ -185,7 +185,7 @@ public class Date {
      */
   }
 
-  private String monthString(int monthNumber) {
+  public String monthString(int monthNumber) {
 
     String mon = switch (monthNumber) {
       case 1 -> "January";
