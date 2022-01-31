@@ -11,6 +11,8 @@ public class Testing {
   int testMonth = 2;
   int testYear = 2000;
   Date date = new Date(testMonth, testDay, testYear);
+  Date equalDate = new Date(testMonth, testDay, testYear);
+  Date earlyDate = new Date(1, 1, 2000);
 
   @Test
   public void testgetDay() {
@@ -33,8 +35,18 @@ public class Testing {
   }
 
   @Test
-  public void testMonthOK() {
+  public void testmonthCheck() {
     String testMonth2 = "July";
-    Assert.assertTrue(date.monthOK(testMonth2) == true);
+    Assert.assertTrue(date.monthCheck(testMonth2) == true);
+  }
+
+  @Test
+  public void testEquals() {
+    Assert.assertTrue(date.equals(equalDate));
+  }
+
+  @Test
+  public void testPrecedes() {
+    Assert.assertTrue(earlyDate.precedes(date));
   }
 }
